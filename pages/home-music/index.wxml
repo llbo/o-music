@@ -1,2 +1,12 @@
 <!--pages/home-music/index.wxml-->
-<text>home-music</text>
+<view>
+  <!-- <van-search placeholder="搜索你喜欢的歌曲"></van-search> -->
+  <input class="input" bindconfirm="bindconfirm" bindfocus="handleSearchClick" placeholder="搜索你喜欢的歌曲"/>
+</view>
+<swiper class="swiper" style="height: {{swiperHeight}}px;" interval="{{3000}}" indicator-dots autoplay circular indicator-active-color="#ccc">
+    <block wx:for="{{banners}}" wx:key="bannerId">
+      <swiper-item class="swiper-item">
+        <image class="swiper-image" bindload="imageLoad" src="{{item.pic}}" mode="widthFix"></image>
+      </swiper-item>
+    </block>
+  </swiper>

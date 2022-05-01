@@ -1,0 +1,23 @@
+{
+  "name": "o-music",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/llbo/o-music.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llbo/o-music/issues"
+  },
+  "homepage": "https://github.com/llbo/o-music#readme",
+  "dependencies": {
+    "@vant/weapp": "^1.10.0"
+  }
+}
