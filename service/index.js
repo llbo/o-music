@@ -6,7 +6,7 @@ class ORequest {
                 url: BASE_URL + url,
                 method: method,
                 data: params,
-                success: (res) => resolve(res),
+                success: (res) => resolve(res.data),
                 fail: reject
               })
         })

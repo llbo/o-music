@@ -1,10 +1,12 @@
 {
-    "pages": [
-        "pages/home-music/index",
-        "pages/home-video/index"
-    ],
-    "tabBar": {
-      "list": [{
+  "pages": [
+    "pages/home-music/index",
+    "pages/home-video/index",
+    "pages/video-detail/index"
+  ],
+  "tabBar": {
+    "list": [
+      {
         "pagePath": "pages/home-music/index",
         "text": "音乐",
         "iconPath": "assets/images/tabbar/music_normal.png",
@@ -17,14 +19,14 @@
         "selectedIconPath": "assets/images/tabbar/video_active.png"
       }
     ]
-    },
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Weixin",
-        "navigationBarTextStyle": "black"
-    },
-    "style": "v2",
-    "sitemapLocation": "sitemap.json",
-    "lazyCodeLoading": "requiredComponents"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }
