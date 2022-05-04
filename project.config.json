@@ -42,7 +42,7 @@
     "useCompilerPlugins": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.23.4",
+  "libVersion": "2.18.0",
   "appid": "wx7f89064ceca14141",
   "projectname": "o-music",
   "debugOptions": {

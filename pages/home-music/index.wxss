@@ -1,10 +1,18 @@
 /* pages/home-music/index.wxss */
+page {
+  padding: 0 20rpx;
+}
 .input {
   background-color: #f1f1f1;
   font-size: 28rpx;
   padding-left: 20rpx;
-  margin: 24rpx;
+  margin: 20rpx 0;
   border-radius: 8px;
+}
+.swiper {
+  border-radius: 10rpx;
+  overflow: hidden;
+  transform: translateY(0);
 }
 .swiper-image {
   width: 100%;

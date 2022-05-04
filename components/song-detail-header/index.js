@@ -1,10 +1,10 @@
-// components/video-item-v1/index.js
+// components/song-detail-header/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    item: {
+    songInfo: {
       type: Object,
       value: {}
     }

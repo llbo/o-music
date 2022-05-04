@@ -1,4 +1,4 @@
-// pages/search-detail/index.js
+// pages/music-player/index.js
 Page({
 
   /**
