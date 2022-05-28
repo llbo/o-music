@@ -5,9 +5,12 @@ export function getBanners() {
   })
 }
 
-export function getRankings(idx) {
-  return oRequest.get("/top/list", {
-    idx
+export function getRankings(id) {
+  // return oRequest.get("/top/list", {
+  //   idx
+  // })
+  return oRequest.get("/playlist/detail", {
+    id
   })
 }
 
