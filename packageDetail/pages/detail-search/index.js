@@ -1,7 +1,7 @@
 // pages/detail-search/index.js
-import { getSearchHot, getSearchSuggest, getSearchResult } from '../../service/apiSearch'
-import debounce from '../../utils/debounce'
-import stringToNodes from '../../utils/string2nodes'
+import { getSearchHot, getSearchSuggest, getSearchResult } from '../../../service/apiSearch'
+import debounce from '../../../utils/debounce'
+import stringToNodes from '../../../utils/string2nodes'
 
 const debounceGetSearchSuggest = debounce(getSearchSuggest, 300)
 
@@ -35,18 +35,23 @@ Page({
 
     // 3.判断关键字为空字符的处理逻辑
     if (!searchValue.length) {
-      this.setData({ suggestSongs: [] })
-      this.setData({ resultSongs: [] })
+      this.setData({ suggestSongs: [], resultSongs: [] })
       debounceGetSearchSuggest.cancel()
       return
     }
 
     // 4.根据关键字进行搜索
     debounceGetSearchSuggest(searchValue).then(res => {
+      // if (!this.data.searchValue.length) {
+      //   console.log("searchValue没有值")
+      //   return
+      // }
+
       // 1.获取建议的关键字歌曲
       const suggestSongs = res.result.allMatch
       this.setData({ suggestSongs })
       if (!suggestSongs) return
+
       // 2.转成nodes节点
       const suggestKeywords = suggestSongs.map(item => item.keyword)
       const suggestSongsNodes = []

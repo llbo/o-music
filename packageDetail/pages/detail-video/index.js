@@ -1,5 +1,6 @@
-// pages/video-detail/index.js
-import {getMVURL, getMVDetail, getRelatedVideo} from '../../service/apiVideo'
+// pages/detail-video/index.js
+import { getMVURL, getMVDetail, getRelatedVideo } from '../../../service/apiVideo'
+
 Page({
 
   /**
@@ -17,29 +18,36 @@ Page({
       text: '第 3s 出现的弹幕',
       color: '#ff00ff',
       time: 3
-    }],
+    }]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad (options) {
+  onLoad: function (options) {
+    // 1.获取传入的id
     const id = options.id
+
+    // 2.获取页面的数据
     this.getPageData(id)
+
+    // 3.其他逻辑
   },
 
-  getPageData(id) {
+  getPageData: function(id) {
+    // 1.请求播放地址
     getMVURL(id).then(res => {
-      console.log(res)
-      this.setData({mvURLInfo: res.data})
-    } )
+      this.setData({ mvURLInfo: res.data })
+    }) 
+
+    // 2.请求视频信息
     getMVDetail(id).then(res => {
-      console.log(res)
-      this.setData({mvDetail: res.data})
-    } )
+      this.setData({ mvDetail: res.data })
+    })
+
+    // 3.请求相关视频
     getRelatedVideo(id).then(res => {
-      console.log(res)
-      this.setData({relatedVideos: res.data})
-    } )
+      this.setData({ relatedVideos: res.data })
+    })
   }
 })

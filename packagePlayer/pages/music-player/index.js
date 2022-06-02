@@ -1,7 +1,7 @@
 // pages/music-player/index.js
 // import { getSongDetail, getSongLyric } from '../../service/api_player'
 // import { parseLyric } from '../../utils/parse-lyric'
-import { audioContext, playerStore } from '../../store/index'
+import { audioContext, playerStore } from '../../../store/index'
 
 const playModeNames = ["order", "repeat", "random"]
 
@@ -48,7 +48,7 @@ Page({
     const navBarHeight = globalData.navBarHeight
     const deviceRadio = globalData.deviceRadio
     const contentHeight = screenHeight - statusBarHeight - navBarHeight
-    this.setData({ contentHeight, isMusicLyric: deviceRadio >= 1 })
+    this.setData({ contentHeight, isMusicLyric: deviceRadio >= 2 })
 
     // 4.使用audioContext播放歌曲
     // audioContext.stop()
@@ -79,7 +79,7 @@ Page({
     const currentTime = this.data.durationTime * value / 100
 
     // 3.设置context播放currentTime位置的音乐
-    audioContext.pause()
+    // audioContext.pause()
     audioContext.seek(currentTime / 1000)
 
     // 4.记录最新的sliderValue, 并且需要讲isSliderChaning设置回false
@@ -111,17 +111,15 @@ Page({
   },
 
   // ========================   数据监听   ======================== 
+  handleCurrentMusicListener: function({ currentSong, durationTime, lyricInfos }) {
+    if (currentSong) this.setData({ currentSong })
+    if (durationTime) this.setData({ durationTime })
+    if (lyricInfos) this.setData({ lyricInfos })
+  },
+
   setupPlayerStoreListener: function() {
     // 1.监听currentSong/durationTime/lyricInfos
-    playerStore.onStates(["currentSong", "durationTime", "lyricInfos"], ({
-      currentSong,
-      durationTime,
-      lyricInfos
-    }) => {
-      if (currentSong) this.setData({ currentSong })
-      if (durationTime) this.setData({ durationTime })
-      if (lyricInfos) this.setData({ lyricInfos })
-    })
+    playerStore.onStates(["currentSong", "durationTime", "lyricInfos"], this.handleCurrentMusicListener)
 
     // 2.监听currentTime/currentLyricIndex/currentLyricText
     playerStore.onStates(["currentTime", "currentLyricIndex", "currentLyricText"], ({
@@ -162,7 +160,6 @@ Page({
   },
 
   onUnload: function () {
-
+    playerStore.offStates(["currentSong", "durationTime", "lyricInfos"], this.handleCurrentMusicListener)
   },
-
 })

@@ -12,8 +12,8 @@ Page({
     hotSongMenu: [],
     recommendSongMenu: [],
     recommendSongs: [],
-    rankings: { 0: {}, 2: {}, 3: {} },
-
+    rankings: { 3779629: {}, 3778678: {},  2884035: {} },
+    // rankings: { 0: {}, 2: {}, 3: {} },
     currentSong: {},
     isPlaying: false,
     playAnimState: "paused"
@@ -50,7 +50,7 @@ Page({
   // 事件处理
   handleSearchClick: function() {
     wx.navigateTo({
-      url: '/pages/detail-search/index',
+      url: '/packageDetail/pages/detail-search/index',
     })
   },
 
@@ -74,7 +74,7 @@ Page({
 
   navigateToDetailSongsPage: function(rankingName) {
     wx.navigateTo({
-      url: `/pages/detail-songs/index?ranking=${rankingName}&type=rank`,
+      url: `/packageDetail/pages/detail-songs/index?ranking=${rankingName}&type=rank`,
     })
   },
 
@@ -92,7 +92,7 @@ Page({
 
   handlePlayBarClick: function() {
     wx.navigateTo({
-      url: '/pages/music-player/index?id=' + this.data.currentSong.id,
+      url: '/packagePlayer/pages/music-player/index?id=' + this.data.currentSong.id,
     })
   },
 
@@ -108,9 +108,9 @@ Page({
       const recommendSongs = res.tracks.slice(0, 6)
       this.setData({ recommendSongs })
     })
-    rankingStore.onState("newRanking", this.getRankingHandler(0))
-    rankingStore.onState("originRanking", this.getRankingHandler(2))
-    rankingStore.onState("upRanking", this.getRankingHandler(3))
+    rankingStore.onState("newRanking", this.getRankingHandler(3779629))
+    rankingStore.onState("originRanking", this.getRankingHandler(3778678))
+    rankingStore.onState("upRanking", this.getRankingHandler(2884035))
 
     // 2.播放器监听
     playerStore.onStates(["currentSong", "isPlaying"], ({currentSong, isPlaying}) => {

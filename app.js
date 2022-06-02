@@ -28,6 +28,17 @@ App({
     // 判断session是否过期
     const isSessionExpire = await checkSession()
 
+    // 2.让用户默认进行登录
+    // this.handleLogin()
+  },
+
+  handleLogin: async function() {
+    const token = wx.getStorageSync(TOKEN_KEY)
+    // token有没有过期
+    const checkResult = await checkToken()
+    // 判断session是否过期
+    const isSessionExpire = await checkSession()
+
     if (!token || checkResult.errorCode || !isSessionExpire) {
       this.loginAction()
     }

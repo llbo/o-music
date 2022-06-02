@@ -5,10 +5,10 @@ import { getRankings } from '../service/apiMusic'
 const rankingMap = { 3779629: "newRanking", 3778678: "hotRanking", 2884035: "originRanking", 19723756: "upRanking" }
 const rankingStore = new HYEventStore({
   state: {
-    newRanking: {}, // 0: 新歌
+    newRanking: {}, // 3779629: 新歌
     hotRanking: {}, // 1: 热门
-    originRanking: {}, // 2: 原创
-    upRanking: {} // 3: 飙升
+    originRanking: {}, // 3778678: 原创
+    upRanking: {} // 2884035: 飙升
   },
   actions: {
     getRankingDataAction(ctx) {
